@@ -26,7 +26,7 @@ const HomePage = () => {
           <h1 class="site-title">Name Wok</h1>
         </div>
         <div class="name-counter">
-          已生成 <span class="counter-number" id="nameCounter">53</span> 个名字
+          已生成 <span class="counter-number" id="nameCounter">0</span> 个名字
         </div>
       </header>
 
@@ -83,15 +83,40 @@ const HomePage = () => {
         let totalNames = 53;
         const nameCounter = document.getElementById('nameCounter');
 
-        function updateNameCounter() {
-          totalNames += 3;
-          nameCounter.textContent = totalNames;
-          
-          // 添加动画效果
-          nameCounter.style.transform = 'scale(1.2)';
-          setTimeout(() => {
-            nameCounter.style.transform = 'scale(1)';
-          }, 200);
+        // 获取实际的名字生成总数
+        async function fetchTotalNames() {
+          try {
+            const response = await fetch('https://name-gen-v3.hughzhang.workers.dev/api/generate', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ firstName: 'John' })  // 使用示例名字获取总数
+            });
+            const data = await response.json();
+            if (data.totalNamesGenerated !== undefined) {
+              totalNames = data.totalNamesGenerated;
+              nameCounter.textContent = totalNames;
+            }
+          } catch (error) {
+            console.error('Error fetching total names:', error);
+          }
+        }
+
+        // 页面加载时获取总数
+        fetchTotalNames();
+
+        function updateNameCounter(newTotal) {
+          if (newTotal !== undefined && newTotal > totalNames) {
+            totalNames = newTotal;
+            nameCounter.textContent = totalNames;
+            
+            // 添加动画效果
+            nameCounter.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+              nameCounter.style.transform = 'scale(1)';
+            }, 200);
+          }
         }
 
         // 加载提示信息
@@ -171,7 +196,7 @@ const HomePage = () => {
             const data = await response.json();
             
             // 更新计数器
-            updateNameCounter();
+            updateNameCounter(data.totalNamesGenerated);
             
             // 清除示例卡片
             cardsContainer.innerHTML = '';
