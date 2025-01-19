@@ -1,0 +1,13 @@
+/* Base styles */
+@import '/static/css/base/reset.css';
+
+/* Layout */
+@import '/static/css/layout/header.css';
+
+/* Components */
+@import '/static/css/components/name-card.css';
+@import '/static/css/components/input-section.css';
+@import '/static/css/components/loading.css';
+
+/* Animations */
+@import '/static/css/animations/animations.css';

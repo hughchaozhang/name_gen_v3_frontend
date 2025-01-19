@@ -23,12 +23,45 @@
 ├── README.md          # 项目说明文档
 ├── public/           # 静态资源目录
 │   └── static/      
-│       └── style.css # 全局样式文件
+│       └── css/     # CSS 样式目录
+│           ├── main.css           # 主样式文件，导入其他所有样式
+│           ├── base/             # 基础样式
+│           │   └── reset.css     # 重置样式和全局变量
+│           ├── layout/           # 布局相关样式
+│           │   └── header.css    # 头部布局样式
+│           ├── components/       # 组件样式
+│           │   ├── name-card.css    # 名字卡片样式
+│           │   ├── input-section.css # 输入区域样式
+│           │   └── loading.css       # 加载动画样式
+│           └── animations/       # 动画样式
+│               └── animations.css # 全局动画定义
 ├── src/             # 源代码目录
-│   ├── index.tsx    # 应用入口
+│   ├── index.tsx    # 应用入口文件
+│   ├── namewok.tsx  # 名字推荐卡片组件
 │   └── renderer.tsx # 渲染相关代码
 └── requirements/    # 需求文档目录
 ```
+
+## 样式架构
+
+项目采用模块化的 CSS 架构，遵循以下原则：
+
+1. **基础样式 (Base)**
+   - 重置默认样式
+   - 定义全局变量（颜色、间距等）
+   - 设置基础字体和布局
+
+2. **布局组件 (Layout)**
+   - 处理页面级的布局结构
+   - 包含响应式设计规则
+
+3. **UI组件 (Components)**
+   - 独立的组件级样式
+   - 每个组件都有自己的样式文件
+
+4. **动画 (Animations)**
+   - 集中管理所有动画效果
+   - 确保动画的一致性
 
 ## 页面布局
 
@@ -86,4 +119,3 @@ bun run dev
 3. 构建部署
 ```bash
 bun run build
-```

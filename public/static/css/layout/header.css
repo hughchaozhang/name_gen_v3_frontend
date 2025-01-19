@@ -1,0 +1,55 @@
+/* 头部布局样式 */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+  margin-bottom: calc(var(--spacing) * 2);
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.site-title {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+/* 名字计数器样式 */
+.name-counter {
+  color: var(--secondary-color);
+  font-size: 1rem;
+  padding: 8px 16px;
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in;
+}
+
+.counter-number {
+  color: var(--primary-color);
+  font-weight: bold;
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .header-left {
+    margin-bottom: var(--spacing);
+  }
+}

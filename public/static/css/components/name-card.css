@@ -1,0 +1,66 @@
+/* 名字卡片容器 */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* 单个卡片样式 */
+.name-card {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: var(--spacing);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.english-name {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.name-card h3 {
+  color: var(--primary-color);
+  margin-bottom: calc(var(--spacing) / 2);
+}
+
+/* 复制按钮 */
+.copy-button {
+  position: absolute;
+  top: var(--spacing);
+  right: var(--spacing);
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  color: var(--secondary-color);
+  background: transparent;
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.copy-button:hover {
+  color: white;
+  background: var(--secondary-color);
+}
+
+/* 卡片内容区域 */
+.card-section {
+  margin-bottom: var(--spacing);
+}
+
+.card-section h4 {
+  color: var(--secondary-color);
+  margin-bottom: calc(var(--spacing) / 2);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}

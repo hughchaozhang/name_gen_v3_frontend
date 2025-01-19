@@ -1,0 +1,52 @@
+/* 输入区域样式 */
+.input-section {
+  margin-bottom: calc(var(--spacing) * 2);
+}
+
+.input-container {
+  display: flex;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+}
+
+/* 输入框 */
+.name-input {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.name-input:focus {
+  border-color: var(--primary-color);
+}
+
+/* 提交按钮 */
+.submit-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #c0392b;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .input-container {
+    flex-direction: column;
+  }
+  
+  .submit-button {
+    width: 100%;
+  }
+}

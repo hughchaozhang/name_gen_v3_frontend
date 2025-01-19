@@ -9,7 +9,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <meta name="description" content="Name Wok - 智能英文转中文姓名推荐系统" />
         <title>Name Wok - 智能英文转中文姓名推荐</title>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-        <link href="/static/style.css" rel="stylesheet" />
+        <link href="/static/css/main.css" rel="stylesheet" />
       </head>
       <body>{children}</body>
     </html>
