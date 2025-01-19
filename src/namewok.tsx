@@ -159,8 +159,11 @@ export const NameWok: FC = () => {
         });
 
         // 生成名字功能
-        document.getElementById('generateButton').addEventListener('click', async function() {
-          const nameInput = document.getElementById('nameInput');
+        const generateButton = document.getElementById('generateButton');
+        const nameInput = document.getElementById('nameInput');
+
+        // 生成名字的主要函数
+        async function generateNames() {
           const firstName = nameInput.value.trim();
           const loadingContainer = document.getElementById('loadingContainer');
           const cardsContainer = document.querySelector('.cards-container');
@@ -246,6 +249,20 @@ export const NameWok: FC = () => {
             // 停止加载动画
             loadingContainer.classList.remove('active');
             clearInterval(messageInterval);
+          }
+        }
+
+        // 添加点击事件监听器
+        generateButton.addEventListener('click', generateNames);
+
+        // 添加键盘事件监听器
+        nameInput.addEventListener('keypress', function(event) {
+          // 当用户按下回车键时
+          if (event.key === 'Enter') {
+            // 阻止默认的表单提交行为
+            event.preventDefault();
+            // 触发生成名字
+            generateNames();
           }
         });
       `}} />
