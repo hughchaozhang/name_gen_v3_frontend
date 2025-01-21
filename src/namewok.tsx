@@ -75,19 +75,13 @@ export const NameWok: FC = () => {
       {/* 客户端脚本 */}
       <script dangerouslySetInnerHTML={{__html: `
         // 名字计数器
-        let totalNames = 53;
+        let totalNames = 0;
         const nameCounter = document.getElementById('nameCounter');
 
         // 获取实际的名字生成总数
         async function fetchTotalNames() {
           try {
-            const response = await fetch('https://name-gen-v3.hughzhang.workers.dev/api/generate', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ firstName: 'John' })  // 使用示例名字获取总数
-            });
+            const response = await fetch('https://name-gen-v3.hughzhang.workers.dev/api/stats');
             const data = await response.json();
             if (data.totalNamesGenerated !== undefined) {
               totalNames = data.totalNamesGenerated;
